@@ -25,6 +25,7 @@ resource appService 'Microsoft.Web/sites@2020-06-01' = {
   properties: {
     serverFarmId: appServicePlan.id
     siteConfig: {
+      appCommandLine: 'gunicorn --bind=0.0.0.0 --timeout 600 --chdir app app:app'
       linuxFxVersion: linuxFxVersion
     }
   }
